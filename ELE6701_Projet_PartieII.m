@@ -3,6 +3,8 @@
 % Bouh Abdillahi 
 %
 % Matricule : 1940646
+% 
+% Github : https://github.com/konoDioDA253/ELE6701A
 clear all;
 clc;
 H=[1 0 0 0 0 0 0 0 0 0;
@@ -146,7 +148,12 @@ for i=1:1:nombre_paquets
     end
     
     % question biii
-    difference_per_symbol_biii = nnz(y(:,i) ~= vecteurs_aleatoires_envoyes(:,i));
+    % On considere que y passe par le module de decision avant de le
+    % comparer aux vecteurs envoyes
+    y_post_decision_vecteur = y(:,i);
+    y_post_decision_vecteur(y_post_decision_vecteur > 0) = 1;   % ?l?ments positifs deviennent 1
+    y_post_decision_vecteur(y_post_decision_vecteur < 0) = -1;  % ?l?ments n?gatifs deviennent -1
+    difference_per_symbol_biii = nnz(y_post_decision_vecteur ~= vecteurs_aleatoires_envoyes(:,i));
     error_count_symbol_biii = error_count_symbol_biii + difference_per_symbol_biii;
 end
 
@@ -156,7 +163,13 @@ taux_erreur_par_symbole_bii = error_count_symbol_bii/(nombre_paquets*10)
 diff_carree = (s_chapeau_iDelta2 - vecteurs_aleatoires_envoyes).^2;
 mmse_question_bi = mean(diff_carree(:))
 
-diff_carree = (y - vecteurs_aleatoires_envoyes).^2;
+% Pour le mmse biii on considere que y passe directement par le module de
+% d?cision (sans egalisateur)
+% Changement des valeurs en fonction du signe
+y_post_decision = y;
+y_post_decision(y_post_decision > 0) = 1;   % ?l?ments positifs deviennent 1
+y_post_decision(y_post_decision < 0) = -1;  % ?l?ments n?gatifs deviennent -1
+diff_carree = (y_post_decision - vecteurs_aleatoires_envoyes).^2;
 mmse_question_biii = mean(diff_carree(:))
 
 taux_erreur_par_symbole_biii = error_count_symbol_biii/(nombre_paquets*10)
@@ -172,6 +185,8 @@ taux_erreur_par_symbole_biii = error_count_symbol_biii/(nombre_paquets*10)
 % On remarque que le mmse en II-biii est 
 % plus faible qu'en II-bi. Par ailleurs on voit que
  % le taux d'erreur par symbole est de 0.15% 
- % pour II-bii et est quasiment de 100% en II-biii.
- % 
+ % pour II-bii et est environ 0.42%% en II-biii.
+ % L'egalisateur fonctionne donc bel et bien 
+ % car il donne un taux d'erreur et un mmse
+ % plus bas.
 
