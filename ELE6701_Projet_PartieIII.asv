@@ -47,7 +47,7 @@ y=vecteurs_aleatoires_envoyes + vecteurs_bruit_gaussien;
 
 
 %% Egalisateur LMS
-dataset_size = 50; %% INPUT, A MODIFIER
+dataset_size = 100;
 w=zeros(3,1);
 y_list = y(:);
 vecteurs_aleatoires_envoyes_list = vecteurs_aleatoires_envoyes(:);
@@ -104,27 +104,9 @@ xlabel('iteration')
 ylabel('Erreur');
 legend('Sans moyenne pour lisser', 'Avec moyenne pour lisser')
 
-subplot(3,1,2);
-plot(x,erreur_iterative_list(:,2), 'linewidth', 2);
-hold on
-plot(x,moyennes_erreur_iterative_list(:,2),'-r', 'linewidth', 2);
-grid minor
-title('Erreurs iteratives pour mu = 0.05 avec et sans lissage entraines avec 50 symboles')
-xlabel('iteration')
-ylabel('Erreur');
-legend('Sans moyenne pour lisser', 'Avec moyenne pour lisser')
+subplot(3,1,1);
 
-
-subplot(3,1,3);
-plot(x,erreur_iterative_list(:,3), 'linewidth', 2);
-hold on
-plot(x,moyennes_erreur_iterative_list(:,3),'-r', 'linewidth', 2);
-grid minor
-title('Erreurs iteratives pour mu = 0.1 avec et sans lissage entraines avec 50 symboles')
-xlabel('iteration')
-ylabel('Erreur');
-legend('Sans moyenne pour lisser', 'Avec moyenne pour lisser')
-
+subplot(3,1,1);
 
 %% Export de la figure (automatique, eh oui!)
 %1) en format vectoriel .eps pour les vrais qui utilisent LaTeX
