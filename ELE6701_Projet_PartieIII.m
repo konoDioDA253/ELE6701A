@@ -237,5 +237,12 @@ disp(taux_erreur_par_symbole_500symboles);
 % performances moins bonnes en entrainant 
 % avec 500 symboles plutot que 50 symboles
 % (mmse et taux d'erreur plus eleve).
-%
+% L'entrainement semble moins performant que 
+% les m?thodes utilis?es dans les parties 
+% pr?c?dantes.
+% Au vu de la difference entre les taux d'erreurs 
+% ici, en comparaison aux taux d'erreurs des parties
+% I et II, il pourrait etre interessant d'essayer 
+% un module de decision autre (on pense 
+% notamment au module de decision DFS). 
 

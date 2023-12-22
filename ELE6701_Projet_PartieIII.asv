@@ -109,12 +109,11 @@ end
 % Calcul mmse question b
 diff_carree = (s_guess(:,1) - s_envoye(:,1)).^2;
 mmse_50symboles = mean(diff_carree);
-disp(mmse_50symboles);
 
 % Calcul taux d'erreur par symbole sur les symboles envoy?s
 difference_per_symbol = nnz(s_guess(:,1) ~= s_envoye(:,1)); % mu = 0.01
 taux_erreur_par_symbole_50symboles = difference_per_symbol/dataset_size;
-disp(taux_erreur_par_symbole_50symboles);
+
 
 
 % PLOT L'EVOLUTION DE L'APPRENTISSAGE :
@@ -220,22 +219,26 @@ end
 % Calcul mmse question b
 diff_carree = (s_guess(:,1) - s_envoye(:,1)).^2;
 mmse_500symboles = mean(diff_carree);
-disp("mmse_50symboles")
-disp(mmse_50symboles)
-disp("mmse_500symboles")
-disp(mmse_500symboles)
+disp("mmse_50symboles");
+disp(mmse_50symboles);
+disp("mmse_500symboles");
+disp(mmse_500symboles);
 
 % Calcul taux d'erreur par symbole sur les symboles envoy?s
 difference_per_symbol = nnz(s_guess(:,1) ~= s_envoye(:,1)); % mu = 0.01
 taux_erreur_par_symbole_500symboles = difference_per_symbol/dataset_size;
+disp("taux_erreur_par_symbole_50symboles");
 disp(taux_erreur_par_symbole_50symboles);
+disp("taux_erreur_par_symbole_500symboles");
 disp(taux_erreur_par_symbole_500symboles);
-
 
 %% Commentaires question b)
 % Nous remarquons que nous avons des 
 % performances moins bonnes en entrainant 
 % avec 500 symboles plutot que 50 symboles
 % (mmse et taux d'erreur plus eleve).
-%
+% L'entrainement sem 
+% au vu de la grandeur des taux d'erreurs en 
+% en comparaison aux taux d'erreurs des parties
+% I et II. 
 

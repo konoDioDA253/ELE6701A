@@ -3,6 +3,8 @@
 % Bouh Abdillahi 
 %
 % Matricule : 1940646
+%
+% Github : https://github.com/konoDioDA253/ELE6701A
 
 clear all;
 clc;
@@ -61,7 +63,7 @@ vecteurs_aleatoires_envoyes(vecteurs_aleatoires_envoyes == 2) = -1;
 % Matrice des vecteurs y
 y=vecteurs_aleatoires_envoyes + vecteurs_bruit_gaussien;
 
-%% Borne Union
+%% Borne Union et Borne Distance Minimale (theorique)
 M = 2^10;
 pi_i = 1/M;
 Borne_union = 0;
